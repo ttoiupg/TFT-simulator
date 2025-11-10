@@ -19,7 +19,9 @@ namespace TFT_simulator
             InitializeComponent();
             string outputText = string.Empty;
             var sb = new StringBuilder();
-            foreach (var element in tftElements){
+            var list = tftElements.OrderBy(x => x.Zindex);
+            foreach (var element in list)
+            {
                 sb.AppendLine($"// {element.Name}");
                 sb.AppendLine(element.Serialize(prefix));
             }

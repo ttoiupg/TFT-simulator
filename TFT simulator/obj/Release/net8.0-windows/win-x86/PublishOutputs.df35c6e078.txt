@@ -1,0 +1,7 @@
+C:\WindowsForms\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\publish\win-x86\TFT simulator.pdb
+C:\WindowsForms\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\publish\win-x86\D3DCompiler_47_cor3.dll
+C:\WindowsForms\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\publish\win-x86\PenImc_cor3.dll
+C:\WindowsForms\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\publish\win-x86\PresentationNative_cor3.dll
+C:\WindowsForms\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\publish\win-x86\vcruntime140_cor3.dll
+C:\WindowsForms\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\publish\win-x86\wpfgfx_cor3.dll
+C:\WindowsForms\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\publish\win-x86\TFT simulator.exe

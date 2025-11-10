@@ -11,6 +11,7 @@ namespace TFT_simulator
         private int _index = -1;
         void InitUi()
         {
+
             _tools = new ToolStrip();
             var addRect = new ToolStripButton("Add Rect", null, (_, __) => AddRect());
             var addCircle = new ToolStripButton("Add Circle", null, (_, __) => AddCircle());
@@ -33,11 +34,8 @@ namespace TFT_simulator
             {
                 if (e.KeyCode == Keys.Delete && _list.SelectedItem is TftElement el)
                 {
-                    CanvasControl.Elements.Remove(el);
-                    CanvasControl.RenderObjects();
-
-                    _list.DataSource = null;
-                    _list.DataSource = CanvasControl.Elements;
+                    CanvasControl.RemoveElement(el);
+                    RefreshListbox();
                 }
             }; ;
             _grid.PropertyValueChanged += (_, __) => CanvasControl.RenderObjects();
@@ -51,11 +49,17 @@ namespace TFT_simulator
             {
                 ZoomLabel.Text = $"x{value}";
             };
-            CanvasControl.OnMove += (value) =>
+            CanvasControl.OnDrag += (value) =>
             {
                 var x = value.X.ToString("0.0");
                 var y = value.Y.ToString("0.0");
                 PanningLabel.Text = $"x:{x} y:{y}";
+            };
+            CanvasControl.OnPointerMove += (value) =>
+            {
+                var x = value.X.ToString("0.0");
+                var y = value.Y.ToString("0.0");
+                MousePositionLabel.Text = $"x:{x} y:{y}";
             };
             // Sample objects
             CanvasControl.TftBackground = Color.White;
@@ -80,6 +84,11 @@ namespace TFT_simulator
         void BindCanvas(TftCanvasControl canvas)
         {
             CanvasControl = canvas;
+            _list.DataSource = null;
+            _list.DataSource = CanvasControl.Elements;
+        }
+        void RefreshListbox()
+        {
             _list.DataSource = null;
             _list.DataSource = CanvasControl.Elements;
         }
@@ -111,8 +120,7 @@ namespace TFT_simulator
         void RefreshListSelect(object item)
         {
             // Rebind so ListBox refreshes display
-            _list.DataSource = null;
-            _list.DataSource = CanvasControl.Elements;
+            RefreshListbox();
             _list.SelectedItem = item;
             CanvasControl.RenderObjects();
         }
@@ -120,67 +128,6 @@ namespace TFT_simulator
         private void ResetZoomButton_Click(object sender, EventArgs e)
         {
             CanvasControl.ResetView();
-        }
-
-        //private void MenuButton_Click(object sender, EventArgs e)
-        //{
-        //    if (MenuPanel.Visible)
-        //    {
-        //        MenuPanel.Hide();
-        //    }
-        //    else
-        //    {
-        //        MenuPanel.Show();
-        //    }
-        //}
-
-        private void AddCircleButton_Click(object sender, EventArgs e)
-        {
-            var c = new CircleElement
-            {
-                Position = new Point(90, 64), // center
-                Radius = 18,
-                IsFilled = false,
-                Thickness = 1,
-                Color = Color.Lime
-            };
-            CanvasControl.AddElement(c);
-        }
-
-        private void AddRectangleButton_Click(object sender, EventArgs e)
-        {
-            var r = new RectElement
-            {
-                Position = new Point(10, 10),
-                Size = new Size(40, 20),
-                IsFilled = true,
-                Color = Color.Red
-            };
-            CanvasControl.AddElement(r);
-        }
-
-        private void AddLineButton_Click(object sender, EventArgs e)
-        {
-            var ln = new LineElement
-            {
-                Position = new Point(0, 0),
-                End = new Point(159, 127),
-                Thickness = 1,
-                Color = Color.Cyan
-            };
-            CanvasControl.AddElement(ln);
-        }
-
-        private void AddTextButton_Click(object sender, EventArgs e)
-        {
-            var txt = new TextElement
-            {
-                Position = new Point(5, 100),
-                Size = new Size(60, 10),
-                Text = "Placeholder",
-                Color = Color.White
-            };
-            CanvasControl.AddElement(txt);
         }
     }
 }

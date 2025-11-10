@@ -35,3 +35,22 @@ C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulat
 C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.pdb
 C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.genruntimeconfig.cache
 C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\ref\TFT simulator.dll
+C:\WindowsForms\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\TFT simulator.exe
+C:\WindowsForms\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\TFT simulator.deps.json
+C:\WindowsForms\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\TFT simulator.runtimeconfig.json
+C:\WindowsForms\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\TFT simulator.dll
+C:\WindowsForms\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\TFT simulator.pdb
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT_simulator.Form1.resources
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT_simulator.OutputForm.resources
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT_simulator.Vector2Input.resources
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.csproj.GenerateResource.cache
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.AssemblyInfoInputs.cache
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.AssemblyInfo.cs
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.csproj.CoreCompileInputs.cache
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.sourcelink.json
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.dll
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\refint\TFT simulator.dll
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.pdb
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.genruntimeconfig.cache
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\ref\TFT simulator.dll

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            MousePositionLabel = new Label();
             PanningLabel = new Label();
             ResetZoomButton = new Button();
             ZoomLabel = new Label();
@@ -38,6 +39,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(MousePositionLabel);
             panel1.Controls.Add(PanningLabel);
             panel1.Controls.Add(ResetZoomButton);
             panel1.Controls.Add(ZoomLabel);
@@ -47,15 +49,28 @@
             panel1.Size = new Size(954, 24);
             panel1.TabIndex = 0;
             // 
+            // MousePositionLabel
+            // 
+            MousePositionLabel.BackColor = Color.Transparent;
+            MousePositionLabel.Dock = DockStyle.Right;
+            MousePositionLabel.Font = new Font("Noto Sans TC", 8.249999F);
+            MousePositionLabel.ForeColor = Color.FromArgb(33, 33, 33);
+            MousePositionLabel.Location = new Point(616, 0);
+            MousePositionLabel.Name = "MousePositionLabel";
+            MousePositionLabel.Size = new Size(108, 24);
+            MousePositionLabel.TabIndex = 3;
+            MousePositionLabel.Text = "label1";
+            MousePositionLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // PanningLabel
             // 
             PanningLabel.BackColor = Color.Transparent;
             PanningLabel.Dock = DockStyle.Right;
             PanningLabel.Font = new Font("Noto Sans TC", 8.249999F);
             PanningLabel.ForeColor = Color.FromArgb(33, 33, 33);
-            PanningLabel.Location = new Point(697, 0);
+            PanningLabel.Location = new Point(724, 0);
             PanningLabel.Name = "PanningLabel";
-            PanningLabel.Size = new Size(135, 24);
+            PanningLabel.Size = new Size(108, 24);
             PanningLabel.TabIndex = 2;
             PanningLabel.Text = "label1";
             PanningLabel.TextAlign = ContentAlignment.MiddleRight;
@@ -118,5 +133,6 @@
         private Button ResetZoomButton;
         private Label PanningLabel;
         private TftCanvasControl CanvasControl;
+        private Label MousePositionLabel;
     }
 }
