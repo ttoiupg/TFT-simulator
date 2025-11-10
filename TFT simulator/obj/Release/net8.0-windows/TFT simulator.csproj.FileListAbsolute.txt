@@ -16,3 +16,22 @@ C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT simulat
 C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.pdb
 C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.genruntimeconfig.cache
 C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT simulator\TFT simulator\obj\Release\net8.0-windows\ref\TFT simulator.dll
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\TFT simulator.exe
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\TFT simulator.deps.json
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\TFT simulator.runtimeconfig.json
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\TFT simulator.dll
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\bin\Release\net8.0-windows\TFT simulator.pdb
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT_simulator.Form1.resources
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT_simulator.OutputForm.resources
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT_simulator.Vector2Input.resources
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.csproj.GenerateResource.cache
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.AssemblyInfoInputs.cache
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.AssemblyInfo.cs
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.csproj.CoreCompileInputs.cache
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.sourcelink.json
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.dll
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\refint\TFT simulator.dll
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.pdb
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.genruntimeconfig.cache
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\ref\TFT simulator.dll

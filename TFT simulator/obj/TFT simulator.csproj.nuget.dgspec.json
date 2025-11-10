@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kopco\\OneDrive\\Desktop\\工科賽第二站\\Windows Form\\tool\\TFT simulator\\TFT simulator\\TFT simulator.csproj": {}
+    "C:\\Users\\kopco\\OneDrive\\Desktop\\工科賽第二站\\Windows Form\\tool\\TFT-simulator\\TFT simulator\\TFT simulator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kopco\\OneDrive\\Desktop\\工科賽第二站\\Windows Form\\tool\\TFT simulator\\TFT simulator\\TFT simulator.csproj": {
+    "C:\\Users\\kopco\\OneDrive\\Desktop\\工科賽第二站\\Windows Form\\tool\\TFT-simulator\\TFT simulator\\TFT simulator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kopco\\OneDrive\\Desktop\\工科賽第二站\\Windows Form\\tool\\TFT simulator\\TFT simulator\\TFT simulator.csproj",
+        "projectUniqueName": "C:\\Users\\kopco\\OneDrive\\Desktop\\工科賽第二站\\Windows Form\\tool\\TFT-simulator\\TFT simulator\\TFT simulator.csproj",
         "projectName": "TFT simulator",
-        "projectPath": "C:\\Users\\kopco\\OneDrive\\Desktop\\工科賽第二站\\Windows Form\\tool\\TFT simulator\\TFT simulator\\TFT simulator.csproj",
+        "projectPath": "C:\\Users\\kopco\\OneDrive\\Desktop\\工科賽第二站\\Windows Form\\tool\\TFT-simulator\\TFT simulator\\TFT simulator.csproj",
         "packagesPath": "C:\\Users\\kopco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kopco\\OneDrive\\Desktop\\工科賽第二站\\Windows Form\\tool\\TFT simulator\\TFT simulator\\obj\\",
+        "outputPath": "C:\\Users\\kopco\\OneDrive\\Desktop\\工科賽第二站\\Windows Form\\tool\\TFT-simulator\\TFT simulator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kopco\\AppData\\Roaming\\NuGet\\NuGet.Config",
