@@ -17,28 +17,162 @@ using System.Xml.Linq;
 
 namespace TFT_simulator
 {
-
     // ---- Elements ----
-    public abstract class TftElement
+    public abstract class TftElement : INotifyPropertyChanged
     {
         // Public so a separate controller can mutate them at runtime.
-        [Category("Data")]public string Name { get; set; }
-        [Category("Transform")] public Point Position { get; set; }
-        [Category("Transform")] public Size Size { get; set; }
-        [Category("Transform")] public int Zindex { get; set; }
-        [Category("Appearance")] public Color Color { get; set; } = Color.Black;
-        [Category("Appearance")] public int Thickness { get; set; } = 1;
-        [Browsable(false)] public string Text { get; set; } = "";
-        [Browsable(false)] public int FontSize { get; set; } = 1;
-        [Browsable(false)] public int Radius { get; set; }
-        [Category("Appearance")] public bool IsFilled { get; set; }
-        public bool IsDragging { get; set; }
-        public int? currentHandleIndex { get; set; }
+        private string _name;
+        private Point _position;
+        private Size _size;
+        private int _zindex;
+        private Color _color = Color.Black;
+        private int _thickness = 1;
+        private string _text = string.Empty;
+        private int _fontSize = 1;
+        private int _radius;
+        private bool _isFilled;
+        private bool _isDragging;
+        private int? _currentHandleIndex;
+        [Category("Data")]public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (_name != value)
+                {
+                    _name = value;
+                    OnPropertyChanged(nameof(Name));
+                }
+            }
+        }
+        [Category("Transform")] public Point Position
+        {
+            get { return _position; }
+            set
+            {
+                if (_position != value)
+                {
+                    _position = value;
+                    OnPropertyChanged(nameof(Position));
+                }
+            }
+        }
+        [Category("Transform")] public Size Size
+        {
+            get { return _size; }
+            set
+            {
+                if (_size != value)
+                {
+                    _size = value;
+                    OnPropertyChanged(nameof(Size));
+                }
+            }
+        }
+        [Category("Transform")] public int Zindex
+        {
+            get { return _zindex; }
+            set
+            {
+                if (_zindex != value)
+                {
+                    _zindex = value;
+                    OnPropertyChanged(nameof(Zindex));
+                }
+            }
+        }
+        [Category("Appearance")] public Color Color
+        {
+            get { return _color; }
+            set
+            {
+                if (_color != value)
+                {
+                    _color = value;
+                    OnPropertyChanged(nameof(Color));
+                }
+            }
+        }
+        [Category("Appearance")] public int Thickness
+        {
+            get { return _thickness; }
+            set
+            {
+                if (_thickness != value)
+                {
+                    _thickness = value;
+                    OnPropertyChanged(nameof(Thickness));
+                }
+            }
+        }
+        [Browsable(false)] public string Text
+        {
+            get { return _text; }
+            set
+            {
+                if (_text != value)
+                {
+                    _text = value;
+                    OnPropertyChanged(nameof(Text));
+                }
+            }
+        }
+        [Browsable(false)] public int FontSize
+        {
+            get { return _fontSize; }
+            set
+            {
+                if (_fontSize != value)
+                {
+                    _fontSize = value;
+                    OnPropertyChanged(nameof(FontSize));
+                }
+            }
+        }
+        [Browsable(false)] public int Radius
+        {
+            get { return _radius; }
+            set
+            {
+                if (_radius != value)
+                {
+                    _radius = value;
+                    OnPropertyChanged(nameof(Radius));
+                }
+            }
+        }
+        [Category("Appearance")] public bool IsFilled
+        {
+            get { return _isFilled; }
+            set
+            {
+                if (_isFilled != value)
+                {
+                    _isFilled = value;
+                    OnPropertyChanged(nameof(IsFilled));
+                }
+            }
+        }
+        [Browsable(false)] public bool IsDragging { get; set; }
+        [Browsable(false)] public int? currentHandleIndex { get; set; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         public override string ToString() => $"{GetType().Name}";
         public abstract string Serialize(string prefix);
         public abstract bool IsPointInside(Point point);
         public abstract void Draw(Graphics g);
-        public abstract void DrawHandle(Graphics g);
+        public virtual void DrawHandle(Graphics g)
+        {
+            var brush = new SolidBrush(Color.Black);
+            var size = new Size(1, 1);
+            foreach (var point in GetHandles())
+            {
+                var r = new Rectangle(point, size);
+                g.FillEllipse(brush, r);
+            }
+            brush.Dispose();
+        }
         public abstract void UpdateSelect(Point mousePos,Point delta);
         public virtual List<Point> GetHandles()
         {
@@ -52,7 +186,7 @@ namespace TFT_simulator
             for (int i = 0; i < h.Count; i++)
             {
                 var dist = Util.GetPointDistance(mousePos, Util.CanvasToScreenPos(h[i], offset, scale));
-                if (dist < 15 && dist < closest)
+                if ((dist < 15 || (scale < 2 && dist < 8)) && dist < closest)
                 {
                     closest = dist;
                     output = i;
@@ -63,6 +197,10 @@ namespace TFT_simulator
         }
         public abstract void StartDrag();
         public abstract void EndDrag();
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            TftCanvasControl.ElementPropertyChanged?.Invoke();
+        }
     }
 
     public sealed class RectElement : TftElement
@@ -100,14 +238,14 @@ namespace TFT_simulator
         {
             return new List<Point>
                     {
-                        Position + new Size(-1,-1),
-                        Util.AddPoints(Position,new Point(Size.Width/2-1,0 - 1)),
-                        Util.AddPoints(Position, new Point(Size.Width-1, 0 - 1)),
-                        Util.AddPoints(Position, new Point(Size.Width-1, Size.Height / 2 - 1)),
+                        Position,
+                        Util.AddPoints(Position,new Point(Size.Width/2-1,0)),
+                        Util.AddPoints(Position, new Point(Size.Width-1, 0)),
+                        Util.AddPoints(Position, new Point(Size.Width-1, Size.Height / 2)),
                         Position + Size + new Size(-1,-1),
-                        Util.AddPoints(Position, new Point(Size.Width / 2 - 1, Size.Height-1)),
-                        Util.AddPoints(Position, new Point(0 - 1, Size.Height - 1)),
-                        Util.AddPoints(Position, new Point(0 - 1, Size.Height/2-1))
+                        Util.AddPoints(Position, new Point(Size.Width / 2, Size.Height-1)),
+                        Util.AddPoints(Position, new Point(0, Size.Height - 1)),
+                        Util.AddPoints(Position, new Point(0, Size.Height/2-1))
                     };
         }
         public override void StartDrag()
@@ -120,17 +258,6 @@ namespace TFT_simulator
         public override void EndDrag()
         {
             IsDragging = false;
-        }
-        public override void DrawHandle(Graphics g)
-        {
-            var brush = new SolidBrush(Color.Black);
-            var size = new Size(2, 2);
-            foreach (var point in GetHandles())
-            {
-                var r = new Rectangle(point, size);
-                g.FillRectangle(brush, r);
-            }
-            brush.Dispose();
         }
         public override void UpdateSelect(Point mousePos, Point startPos)
         {
@@ -244,17 +371,6 @@ namespace TFT_simulator
         {
             return (Math.Pow(point.X - Position.X,2) + Math.Pow(point.Y - Position.Y,2)) <= Math.Pow(Radius,2);
         }
-        public override void DrawHandle(Graphics g)
-        {
-            var brush = new SolidBrush(Color.Black);
-            var size = new Size(2, 2);
-            foreach (var point in GetHandles())
-            {
-                var r = new Rectangle(point, size);
-                g.FillEllipse(brush, r);
-            }
-            brush.Dispose();
-        }
         public override void UpdateSelect(Point mousePos, Point delta)
         {
             var offset = Util.GetPointOffset(mousePos,delta);
@@ -299,25 +415,16 @@ namespace TFT_simulator
         }
         public override bool IsPointInside(Point point)
         {
-            return Util.PointLineDistanceInt(Position.X,Position.Y,End.X,End.Y,point.X,point.Y) < 5;
-        }
-        public override void DrawHandle(Graphics g)
-        {
-            var brush = new SolidBrush(Color.Black);
-            var size = new Size(2, 2);
-            foreach (var point in GetHandles())
-            {
-                var r = new Rectangle(point, size);
-                g.FillEllipse(brush, r);
-            }
-            brush.Dispose();
+            var dist = Util.DistancePointToSegment(Position, End, point);
+            System.Diagnostics.Debug.WriteLine(dist);
+            return dist < 7;
         }
         public override List<Point> GetHandles()
         {
            return new List<Point>
                     {
-                        Position,
-                        End
+                        Util.AddPoints(Position,new Point(-1,-1)),
+                        Util.AddPoints(End,new Point(-1,-1))
                     };
         }
         public override void StartDrag()
@@ -461,6 +568,7 @@ namespace TFT_simulator
     // ---- Canvas control ----
     public class TftCanvasControl : Control
     {
+        public static Action ElementPropertyChanged;
         // TFT logical size (ST7735 typical 160x128). Change if you use another variant.
         public int TftWidth { get; private set; } = 160;
         public int TftHeight { get; private set; } = 128;
@@ -482,6 +590,8 @@ namespace TFT_simulator
 
         public TftElement? SelectedElement { get; private set; }
 
+        public Point mouseCanvasPos { get; private set; }
+
         Bitmap _offscreen;
         bool _panning;
         Point _panStartMouse;
@@ -491,6 +601,8 @@ namespace TFT_simulator
         SelectionElement _selectionElement;
         Point _selectedOffset;
         Point _dragStartPos;
+
+        public event Action refreshListbox;
         public TftCanvasControl()
         {
             SetStyle(ControlStyles.AllPaintingInWmPaint |
@@ -507,6 +619,7 @@ namespace TFT_simulator
                 _panning = false;
                 _selecting = false;
                 _draggingElement = false;
+                refreshListbox?.Invoke();
                 RenderObjects();
             };
             MouseWheel += OnMouseWheel;
@@ -590,6 +703,16 @@ namespace TFT_simulator
             {
                 _selectionElement.Draw(g);
             }
+            if (_draggingElement)
+            {
+                using var pen = new Pen(Color.FromArgb(150,0,0,0));
+                Point pt = new Point(mouseCanvasPos.X, 0)
+                    , pd = new Point(mouseCanvasPos.X, TftHeight)
+                    , pl = new Point(0, mouseCanvasPos.Y)
+                    , pr = new Point(TftWidth, mouseCanvasPos.Y);
+                g.DrawLine(pen,pt,pd);
+                g.DrawLine(pen, pl, pr);
+            }
             SelectedElement?.DrawHandle(g);
             Invalidate(); // trigger OnPaint to show updated scaled image
         }
@@ -648,61 +771,128 @@ namespace TFT_simulator
             _offscreen?.Dispose();
             _offscreen = new Bitmap(TftWidth, TftHeight, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
         }
+        public event Action<TftElement> SelectElement;
         void OnMouseDown(object sender, MouseEventArgs e)
         {
-            var canvasPos = ScreenToCanvasPosition(e.Location);
-            if (e.Button == MouseButtons.Left)
-            {
-                if (SelectedElement == null)
-                {
-                    var element = Util.GetPointerOverlapElement(Elements, canvasPos);
-                    if (element == null)
-                    {
-                        _selecting = true;
-                        _selectionElement.Position = canvasPos;
-                        _selectionElement.End = canvasPos;
-                        SelectedElement = null;
-                        _draggingElement = false;
-                    }
-                    else
-                    {
-                        _draggingElement = true;
-                        SelectedElement = element;
-                        SelectedElement.StartDrag();
-                        SelectedElement.currentHandleIndex = SelectedElement.GetSelectedHandle(e.Location, Zoom, Offset);
-                        System.Diagnostics.Debug.WriteLine(SelectedElement.currentHandleIndex);
-                        _dragStartPos = canvasPos;
-                        _selectedOffset = Util.GetPointOffset(element.Position, canvasPos);
-                    }
-                }
-                else
-                {
-                    SelectedElement.currentHandleIndex = SelectedElement.GetSelectedHandle(e.Location, Zoom, Offset);
-                    if (SelectedElement.currentHandleIndex == null && !SelectedElement.IsPointInside(canvasPos))
-                    {
-                        _selecting = true;
-                        _selectionElement.Position = canvasPos;
-                        _selectionElement.End = canvasPos;
-                        SelectedElement.EndDrag();
-                        SelectedElement = null;
-                        _draggingElement = false;
-                    }
-                    else
-                    {
-                        _draggingElement = true;
-                        SelectedElement.StartDrag();
-                        SelectedElement.currentHandleIndex = SelectedElement.GetSelectedHandle(e.Location, Zoom, Offset);
-                        _dragStartPos = canvasPos;
-                    }
-                }
-            }
+            mouseCanvasPos = ScreenToCanvasPosition(e.Location);
+
+            // Right click => start panning
             if (e.Button == MouseButtons.Right)
             {
                 _panning = true;
                 _panStartMouse = e.Location;
                 _panStartOffset = Offset;
+                return;
             }
+
+            // Ignore non-left buttons
+            if (e.Button != MouseButtons.Left) return;
+
+            // Helper: begin a marquee selection at current mouse position
+            void BeginSelection()
+            {
+                _selecting = true;
+                _selectionElement.Position = mouseCanvasPos;
+                _selectionElement.End = mouseCanvasPos;
+                _draggingElement = false;
+                SelectedElement?.EndDrag();
+                SelectedElement = null;
+            }
+
+            // Helper: begin dragging current SelectedElement
+            void BeginDragSelected()
+            {
+                _draggingElement = true;
+                SelectedElement.StartDrag();
+                SelectedElement.currentHandleIndex = SelectedElement.GetSelectedHandle(e.Location, Zoom, Offset);
+                _dragStartPos = mouseCanvasPos;
+                _selectedOffset = Util.GetPointOffset(SelectedElement.Position, mouseCanvasPos);
+            }
+
+            var hit = Util.GetPointerOverlapElement(Elements, mouseCanvasPos);
+            // If something is already selected, decide whether to keep it or start a new selection
+            if (SelectedElement != null && hit == SelectedElement)
+            {
+                SelectedElement.currentHandleIndex = SelectedElement.GetSelectedHandle(e.Location, Zoom, Offset);
+                bool overSelected =
+                    SelectedElement.currentHandleIndex != null ||
+                    SelectedElement.IsPointInside(mouseCanvasPos);
+
+                if (!overSelected)
+                {
+                    BeginSelection();
+                    return;
+                }
+
+                BeginDragSelected();
+                return;
+            }
+
+            // Nothing selected yet: hit-test for an element under the cursor
+            if (hit == null)
+            {
+                BeginSelection();
+                return;
+            }
+            SelectElement?.Invoke(hit);
+            SelectedElement = hit;
+            BeginDragSelected();
         }
+        //void OnMouseDown(object sender, MouseEventArgs e)
+        //{
+        //    mouseCanvasPos = ScreenToCanvasPosition(e.Location);
+        //    if (e.Button == MouseButtons.Left)
+        //    {
+        //        if (SelectedElement == null)
+        //        {
+        //            var element = Util.GetPointerOverlapElement(Elements, mouseCanvasPos);
+        //            if (element == null)
+        //            {
+        //                _selecting = true;
+        //                _selectionElement.Position = mouseCanvasPos;
+        //                _selectionElement.End = mouseCanvasPos;
+        //                SelectedElement = null;
+        //                _draggingElement = false;
+        //            }
+        //            else
+        //            {
+        //                _draggingElement = true;
+        //                SelectedElement = element;
+        //                SelectedElement.StartDrag();
+        //                SelectedElement.currentHandleIndex = SelectedElement.GetSelectedHandle(e.Location, Zoom, Offset);
+        //                System.Diagnostics.Debug.WriteLine(SelectedElement.currentHandleIndex);
+        //                _dragStartPos = mouseCanvasPos;
+        //                _selectedOffset = Util.GetPointOffset(element.Position, mouseCanvasPos);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            SelectedElement.currentHandleIndex = SelectedElement.GetSelectedHandle(e.Location, Zoom, Offset);
+        //            if (SelectedElement.currentHandleIndex == null && !SelectedElement.IsPointInside(mouseCanvasPos))
+        //            {
+        //                _selecting = true;
+        //                _selectionElement.Position = mouseCanvasPos;
+        //                _selectionElement.End = mouseCanvasPos;
+        //                SelectedElement.EndDrag();
+        //                SelectedElement = null;
+        //                _draggingElement = false;
+        //            }
+        //            else
+        //            {
+        //                _draggingElement = true;
+        //                SelectedElement.StartDrag();
+        //                SelectedElement.currentHandleIndex = SelectedElement.GetSelectedHandle(e.Location, Zoom, Offset);
+        //                _dragStartPos = mouseCanvasPos;
+        //            }
+        //        }
+        //    }
+        //    if (e.Button == MouseButtons.Right)
+        //    {
+        //        _panning = true;
+        //        _panStartMouse = e.Location;
+        //        _panStartOffset = Offset;
+        //    }
+        //}
 
         public event Action<Point> OnPointerMove;
         public event Action<PointF> OnDrag;
@@ -712,12 +902,14 @@ namespace TFT_simulator
             var p = new Point((screenPoint.X - Offset.X)/Zoom,(screenPoint.Y - Offset.Y)/Zoom);
             return p;
         }
+        public event Action UpdateProperty;
         void OnMouseMove(object sender, MouseEventArgs e)
         {
-            var canvasPos = ScreenToCanvasPosition(e.Location);
+            mouseCanvasPos  = ScreenToCanvasPosition(e.Location);
             if (SelectedElement != null && _draggingElement)
             {
-                SelectedElement.UpdateSelect(canvasPos, _dragStartPos);
+                SelectedElement.UpdateSelect(mouseCanvasPos, _dragStartPos);
+                //UpdateProperty?.Invoke();
                 RenderObjects();
             }
             if (_panning)
@@ -730,10 +922,10 @@ namespace TFT_simulator
             }
             if (_selecting)
             {
-                _selectionElement.End = canvasPos;
+                _selectionElement.End = mouseCanvasPos;
                 RenderObjects();
             }
-            OnPointerMove?.Invoke(canvasPos);
+            OnPointerMove?.Invoke(mouseCanvasPos);
         }
 
         void OnMouseWheel(object sender, MouseEventArgs e)
@@ -747,7 +939,7 @@ namespace TFT_simulator
 }
 
 /*
-USAGE EXAMPLE (e.g., in your Form1.cs):
+USAGE EXAMPLE (e.g., in Form1.cs):
 
 public partial class Form1 : Form
 {
@@ -799,8 +991,6 @@ public partial class Form1 : Form
         _canvas.RenderObjects();
         _canvas.CenterView();
     }
-
-    // Later, your controller can mutate any element fields then call:
     // _canvas.RenderObjects();
 }
 */

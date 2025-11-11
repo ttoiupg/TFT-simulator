@@ -52,6 +52,33 @@ namespace TFT_simulator
             int dy = y2 - y1;
             return (int)(Math.Abs(dy * px - dx * py + x2 * y1 - y2 * x1) / Math.Sqrt(dx * dx + dy * dy));
         }
+        public static double DistancePointToSegment(Point a, Point b, Point p)
+        {
+            float dx = b.X - a.X;
+            float dy = b.Y - a.Y;
+
+            if (dx == 0 && dy == 0)
+            {
+                // a and b are the same point
+                dx = p.X - a.X;
+                dy = p.Y - a.Y;
+                return Math.Sqrt(dx * dx + dy * dy);
+            }
+
+            // Compute the projection of p onto the line ab, clamped to [0,1]
+            float t = ((p.X - a.X) * dx + (p.Y - a.Y) * dy) / (dx * dx + dy * dy);
+            t = Math.Max(0, Math.Min(1, t));
+
+            // Compute the closest point on the segment
+            float closestX = a.X + t * dx;
+            float closestY = a.Y + t * dy;
+
+            // Compute the distance
+            dx = p.X - closestX;
+            dy = p.Y - closestY;
+
+            return Math.Sqrt(dx * dx + dy * dy);
+        }
         public static double PointSegmentDistance(double x1, double y1, double x2, double y2, double px, double py)
         {
             double dx = x2 - x1;

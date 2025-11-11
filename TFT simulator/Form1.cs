@@ -22,6 +22,7 @@ namespace TFT_simulator
 
             _list = new ListBox { Dock = DockStyle.Left, Width = 120 };
             _grid = new PropertyGrid { Dock = DockStyle.Right, Width = 200 };
+            TftCanvasControl.ElementPropertyChanged += _grid.Refresh;
             Controls.Add(_grid);
             Controls.Add(_list);
             Controls.Add(_tools);
@@ -37,7 +38,7 @@ namespace TFT_simulator
                     CanvasControl.RemoveElement(el);
                     RefreshListbox();
                 }
-            }; ;
+            };
             _grid.PropertyValueChanged += (_, __) => CanvasControl.RenderObjects();
         }
 
@@ -57,10 +58,17 @@ namespace TFT_simulator
             };
             CanvasControl.OnPointerMove += (value) =>
             {
-                var x = value.X.ToString("0.0");
-                var y = value.Y.ToString("0.0");
+                var x = Math.Clamp(value.X,0,CanvasControl.TftWidth).ToString("0.0");
+                var y = Math.Clamp(value.Y, 0, CanvasControl.TftHeight).ToString("0.0");
                 MousePositionLabel.Text = $"x:{x} y:{y}";
             };
+            CanvasControl.refreshListbox += RefreshListbox;
+            CanvasControl.SelectElement += (element) =>
+            {
+                _list.SelectedItem = element;
+                _grid.SelectedObject = _list.SelectedItem;
+            };
+            //CanvasControl.UpdateProperty += RefreshListbox;
             // Sample objects
             CanvasControl.TftBackground = Color.White;
             CanvasControl.RenderObjects();
@@ -89,8 +97,10 @@ namespace TFT_simulator
         }
         void RefreshListbox()
         {
+            var obj = _list.SelectedItem;
             _list.DataSource = null;
             _list.DataSource = CanvasControl.Elements;
+            _list.SelectedItem = obj;
         }
         void AddRect()
         {
@@ -106,7 +116,7 @@ namespace TFT_simulator
         }
         void AddLine()
         {
-            var e = new LineElement { Name = $"Line {CanvasControl.Elements.Count}", Position = new Point(0, 0), End = new Point(159, 127), Thickness = 1, Color = Color.Cyan };
+            var e = new LineElement { Name = $"Line {CanvasControl.Elements.Count}", Position = new Point(50, 50), End = new Point(50, 70), Thickness = 1, Color = Color.Cyan };
             CanvasControl.AddElement(e);
             RefreshListSelect(e);
         }

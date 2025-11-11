@@ -52,12 +52,12 @@
             // MousePositionLabel
             // 
             MousePositionLabel.BackColor = Color.Transparent;
-            MousePositionLabel.Dock = DockStyle.Right;
+            MousePositionLabel.Dock = DockStyle.Fill;
             MousePositionLabel.Font = new Font("Noto Sans TC", 8.249999F);
             MousePositionLabel.ForeColor = Color.FromArgb(33, 33, 33);
-            MousePositionLabel.Location = new Point(616, 0);
+            MousePositionLabel.Location = new Point(0, 0);
             MousePositionLabel.Name = "MousePositionLabel";
-            MousePositionLabel.Size = new Size(108, 24);
+            MousePositionLabel.Size = new Size(724, 24);
             MousePositionLabel.TabIndex = 3;
             MousePositionLabel.Text = "label1";
             MousePositionLabel.TextAlign = ContentAlignment.MiddleRight;
