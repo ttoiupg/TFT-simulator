@@ -477,3 +477,4 @@ C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\win-x86\r
 C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\win-x86\TFT simulator.pdb
 C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\win-x86\TFT simulator.genruntimeconfig.cache
 C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\win-x86\ref\TFT simulator.dll
+C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\win-x86\TFT_simulator.Properties.Resources.resources

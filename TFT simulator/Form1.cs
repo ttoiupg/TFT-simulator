@@ -5,41 +5,24 @@ namespace TFT_simulator
 {
     public partial class Form1 : Form
     {
-        private PropertyGrid _grid;
-        private ListBox _list;
-        private ToolStrip _tools;
         private int _index = -1;
         void InitUi()
         {
+            TftCanvasControl.ElementPropertyChanged += propertyGrid1.Refresh;
 
-            _tools = new ToolStrip();
-            var addRect = new ToolStripButton("Add Rect", null, (_, __) => AddRect());
-            var addCircle = new ToolStripButton("Add Circle", null, (_, __) => AddCircle());
-            var addLine = new ToolStripButton("Add Line", null, (_, __) => AddLine());
-            var addText = new ToolStripButton("Add Text", null, (_, __) => AddText());
-            var outputButton = new ToolStripButton("Output", null,(_, __) => OpenOutputFrame(CanvasControl.Elements));
-            _tools.Items.AddRange(new ToolStripItem[] { addRect, addCircle, addLine, addText,outputButton });
-
-            _list = new ListBox { Dock = DockStyle.Left, Width = 120 };
-            _grid = new PropertyGrid { Dock = DockStyle.Right, Width = 200 };
-            TftCanvasControl.ElementPropertyChanged += _grid.Refresh;
-            Controls.Add(_grid);
-            Controls.Add(_list);
-            Controls.Add(_tools);
-
-            _list.SelectedIndexChanged += (_, __) =>
+            listBox1.SelectedIndexChanged += (_, __) =>
             {
-                _grid.SelectedObject = _list.SelectedItem; // auto shows type-specific props
+                propertyGrid1.SelectedObject = listBox1.SelectedItem; // auto shows type-specific props
             };
-            _list.KeyDown += (s, e) =>
+            listBox1.KeyDown += (s, e) =>
             {
-                if (e.KeyCode == Keys.Delete && _list.SelectedItem is TftElement el)
+                if (e.KeyCode == Keys.Delete && listBox1.SelectedItem is TftElement el)
                 {
                     CanvasControl.RemoveElement(el);
                     RefreshListbox();
                 }
             };
-            _grid.PropertyValueChanged += (_, __) => CanvasControl.RenderObjects();
+            propertyGrid1.PropertyValueChanged += (_, __) => CanvasControl.RenderObjects();
         }
 
 
@@ -50,7 +33,7 @@ namespace TFT_simulator
             {
                 ZoomLabel.Text = $"x{value}";
             };
-            CanvasControl.OnDrag += (value) =>
+            CanvasControl.OnPan += (value) =>
             {
                 var x = value.X.ToString("0.0");
                 var y = value.Y.ToString("0.0");
@@ -58,15 +41,23 @@ namespace TFT_simulator
             };
             CanvasControl.OnPointerMove += (value) =>
             {
-                var x = Math.Clamp(value.X,0,CanvasControl.TftWidth).ToString("0.0");
+                var x = Math.Clamp(value.X, 0, CanvasControl.TftWidth).ToString("0.0");
                 var y = Math.Clamp(value.Y, 0, CanvasControl.TftHeight).ToString("0.0");
                 MousePositionLabel.Text = $"x:{x} y:{y}";
             };
             CanvasControl.refreshListbox += RefreshListbox;
             CanvasControl.SelectElement += (element) =>
             {
-                _list.SelectedItem = element;
-                _grid.SelectedObject = _list.SelectedItem;
+                listBox1.SelectedItem = element;
+                propertyGrid1.SelectedObject = listBox1.SelectedItem;
+            };
+            CanvasControl.OnDrag += (value) =>
+            {
+                if (!value) ControlLabel.Text = "Left mouse to select Right to pan";
+            };
+            CanvasControl.Dragging += (value) =>
+            {
+                ControlLabel.Text = $"Offset : x:{value.X} y:{value.Y}";
             };
             //CanvasControl.UpdateProperty += RefreshListbox;
             // Sample objects
@@ -76,11 +67,6 @@ namespace TFT_simulator
             InitUi();
             panel1.SendToBack();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
         void OpenOutputFrame(List<TftElement> elements)
         {
             string prefix = Interaction.InputBox("Enter code prefix:", "Output to code", "g");
@@ -89,38 +75,32 @@ namespace TFT_simulator
             OutputForm f = new OutputForm(prefix, elements);
             f.ShowDialog();
         }
-        void BindCanvas(TftCanvasControl canvas)
-        {
-            CanvasControl = canvas;
-            _list.DataSource = null;
-            _list.DataSource = CanvasControl.Elements;
-        }
         void RefreshListbox()
         {
-            var obj = _list.SelectedItem;
-            _list.DataSource = null;
-            _list.DataSource = CanvasControl.Elements;
-            _list.SelectedItem = obj;
+            var obj = listBox1.SelectedItem;
+            listBox1.DataSource = null;
+            listBox1.DataSource = CanvasControl.Elements;
+            listBox1.SelectedItem = obj;
         }
-        void AddRect()
+        void AddRectToCanva()
         {
-            var e = new RectElement {Name = $"Rect {CanvasControl.Elements.Count}", Position = new Point(8, 8), Size = new Size(40, 24), IsFilled = true, Color = Color.Red };
+            var e = new RectElement { Name = $"Rect {CanvasControl.Elements.Count}", Position = new Point(8, 8), Size = new Size(40, 24), IsFilled = true, Color = Color.Red };
             CanvasControl.AddElement(e);
             RefreshListSelect(e);
         }
-        void AddCircle()
+        void AddCircleToCanva()
         {
             var e = new CircleElement { Name = $"Circle {CanvasControl.Elements.Count}", Position = new Point(60, 40), Radius = 16, IsFilled = false, Color = Color.Lime };
             CanvasControl.AddElement(e);
             RefreshListSelect(e);
         }
-        void AddLine()
+        void AddLineToCanva()
         {
             var e = new LineElement { Name = $"Line {CanvasControl.Elements.Count}", Position = new Point(50, 50), End = new Point(50, 70), Thickness = 1, Color = Color.Cyan };
             CanvasControl.AddElement(e);
             RefreshListSelect(e);
         }
-        void AddText()
+        void AddTextToCanva()
         {
             var e = new TextElement { Name = $"Text {CanvasControl.Elements.Count}", Position = new Point(10, 100), Size = new Size(60, 10), Text = "Placeholder", Color = Color.Black };
             CanvasControl.AddElement(e);
@@ -131,13 +111,43 @@ namespace TFT_simulator
         {
             // Rebind so ListBox refreshes display
             RefreshListbox();
-            _list.SelectedItem = item;
+            listBox1.SelectedItem = item;
             CanvasControl.RenderObjects();
         }
 
         private void ResetZoomButton_Click(object sender, EventArgs e)
         {
             CanvasControl.ResetView();
+        }
+
+        private void AddRectButton_Click(object sender, EventArgs e)
+        {
+            AddRectToCanva();
+        }
+
+        private void AddCircleButton_Click(object sender, EventArgs e)
+        {
+            AddCircleToCanva();
+        }
+
+        private void AddLineButton_Click(object sender, EventArgs e)
+        {
+            AddLineToCanva();
+        }
+
+        private void AddTextButton_Click(object sender, EventArgs e)
+        {
+            AddTextToCanva();
+        }
+
+        private void ExportButton_Click(object sender, EventArgs e)
+        {
+            OpenOutputFrame(CanvasControl.Elements);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TFT simulator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ad71a6bdfee4579be1a2e54de4742abd9f1efb7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8c06776e000743dd829f6b06c616be10b932bd01")]
 [assembly: System.Reflection.AssemblyProductAttribute("TFT simulator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TFT simulator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
