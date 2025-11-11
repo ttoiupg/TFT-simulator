@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\kopco\\OneDrive\\Desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\Windows Form\\tool\\TFT-simulator\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{063824C8-8105-4A4C-8EE0-4AA951CB59A8}|TFT simulator\\TFT simulator.csproj|c:\\users\\kopco\\onedrive\\desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\windows form\\tool\\tft-simulator\\tft simulator\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{063824C8-8105-4A4C-8EE0-4AA951CB59A8}|TFT simulator\\TFT simulator.csproj|solutionrelative:tft simulator\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{063824C8-8105-4A4C-8EE0-4AA951CB59A8}|TFT simulator\\TFT simulator.csproj|c:\\users\\kopco\\onedrive\\desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\windows form\\tool\\tft-simulator\\tft simulator\\tft simulator.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{063824C8-8105-4A4C-8EE0-4AA951CB59A8}|TFT simulator\\TFT simulator.csproj|solutionrelative:tft simulator\\tft simulator.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{063824C8-8105-4A4C-8EE0-4AA951CB59A8}|TFT simulator\\TFT simulator.csproj|c:\\users\\kopco\\onedrive\\desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\windows form\\tool\\tft-simulator\\tft simulator\\tftcanvascontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{063824C8-8105-4A4C-8EE0-4AA951CB59A8}|TFT simulator\\TFT simulator.csproj|solutionrelative:tft simulator\\tftcanvascontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{063824C8-8105-4A4C-8EE0-4AA951CB59A8}|TFT simulator\\TFT simulator.csproj|c:\\users\\kopco\\onedrive\\desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\windows form\\tool\\tft-simulator\\tft simulator\\outputformcs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{063824C8-8105-4A4C-8EE0-4AA951CB59A8}|TFT simulator\\TFT simulator.csproj|solutionrelative:tft simulator\\outputformcs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{063824C8-8105-4A4C-8EE0-4AA951CB59A8}|TFT simulator\\TFT simulator.csproj|C:\\Users\\kopco\\OneDrive\\Desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\Windows Form\\tool\\TFT-simulator\\tft simulator\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{063824C8-8105-4A4C-8EE0-4AA951CB59A8}|TFT simulator\\TFT simulator.csproj|solutionrelative:tft simulator\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +46,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
+              "Title": "TFT simulator",
+              "DocumentMoniker": "C:\\Users\\kopco\\OneDrive\\Desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\Windows Form\\tool\\TFT-simulator\\TFT simulator\\TFT simulator.csproj",
+              "RelativeDocumentMoniker": "TFT simulator\\TFT simulator.csproj",
+              "ToolTip": "C:\\Users\\kopco\\OneDrive\\Desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\Windows Form\\tool\\TFT-simulator\\TFT simulator\\TFT simulator.csproj",
+              "RelativeToolTip": "TFT simulator\\TFT simulator.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-11T02:34:36.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "OutputFormcs.cs",
               "DocumentMoniker": "C:\\Users\\kopco\\OneDrive\\Desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\Windows Form\\tool\\TFT-simulator\\TFT simulator\\OutputFormcs.cs",
               "RelativeDocumentMoniker": "TFT simulator\\OutputFormcs.cs",
@@ -50,12 +65,11 @@
               "RelativeToolTip": "TFT simulator\\OutputFormcs.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T07:06:18.508Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-10T07:06:18.508Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Util.cs",
               "DocumentMoniker": "C:\\Users\\kopco\\OneDrive\\Desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\Windows Form\\tool\\TFT-simulator\\TFT simulator\\Util.cs",
               "RelativeDocumentMoniker": "TFT simulator\\Util.cs",
@@ -63,25 +77,23 @@
               "RelativeToolTip": "TFT simulator\\Util.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T06:54:56.32Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-10T06:54:56.32Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "TftCanvasControl.cs",
               "DocumentMoniker": "C:\\Users\\kopco\\OneDrive\\Desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\Windows Form\\tool\\TFT-simulator\\TFT simulator\\TftCanvasControl.cs",
               "RelativeDocumentMoniker": "TFT simulator\\TftCanvasControl.cs",
               "ToolTip": "C:\\Users\\kopco\\OneDrive\\Desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\Windows Form\\tool\\TFT-simulator\\TFT simulator\\TftCanvasControl.cs",
               "RelativeToolTip": "TFT simulator\\TftCanvasControl.cs",
-              "ViewState": "AgIAACYDAAAAAAAAAAAYwCwDAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwDAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T06:54:08.814Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-10T06:54:08.814Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\kopco\\OneDrive\\Desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\Windows Form\\tool\\TFT-simulator\\TFT simulator\\Form1.cs",
               "RelativeDocumentMoniker": "TFT simulator\\Form1.cs",
@@ -94,7 +106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\kopco\\OneDrive\\Desktop\\\u5DE5\u79D1\u8CFD\u7B2C\u4E8C\u7AD9\\Windows Form\\tool\\TFT-simulator\\TFT simulator\\Form1.cs",
               "RelativeDocumentMoniker": "TFT simulator\\Form1.cs",

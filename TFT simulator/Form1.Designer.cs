@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
             MousePositionLabel = new Label();
             PanningLabel = new Label();
@@ -118,6 +119,7 @@
             ClientSize = new Size(954, 539);
             Controls.Add(CanvasControl);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TFT simulator";
