@@ -13,13 +13,15 @@ namespace TFT_simulator
 {
     public partial class OutputForm : Form
     {
-        public OutputForm(string? prefix,List<TftElement> tftElements)
+        public OutputForm(string? prefix,List<TftElement> tftElements,Color backgroundColor)
         {
             var pre = (prefix == null || prefix.Length == 0) ? "g" : prefix;
             InitializeComponent();
             string outputText = string.Empty;
             var sb = new StringBuilder();
             var list = tftElements.OrderBy(x => x.Zindex);
+            sb.AppendLine($"// background color");
+            sb.AppendLine($"g.fillScreen({Util.ToRgb565String(backgroundColor)});");
             foreach (var element in list)
             {
                 sb.AppendLine($"// {element.Name}");

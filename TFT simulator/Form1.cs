@@ -72,7 +72,7 @@ namespace TFT_simulator
             string prefix = Interaction.InputBox("Enter code prefix:", "Output to code", "g");
             if (string.IsNullOrWhiteSpace(prefix))
                 return; // user canceled
-            OutputForm f = new OutputForm(prefix, elements);
+            OutputForm f = new OutputForm(prefix, elements,CanvasControl.TftBackground);
             f.ShowDialog();
         }
         void RefreshListbox()
@@ -148,6 +148,14 @@ namespace TFT_simulator
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (BackgroundColorPicker.ShowDialog() == DialogResult.OK)
+            {
+                CanvasControl.TftBackground = BackgroundColorPicker.Color;
+            }
         }
     }
 }

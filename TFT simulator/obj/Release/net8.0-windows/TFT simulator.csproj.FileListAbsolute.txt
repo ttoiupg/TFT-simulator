@@ -55,3 +55,4 @@ C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simul
 C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT simulator.genruntimeconfig.cache
 C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\ref\TFT simulator.dll
 C:\WindowsForms\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT_simulator.Properties.Resources.resources
+C:\Users\kopco\OneDrive\Desktop\工科賽第二站\Windows Form\tool\TFT-simulator\TFT simulator\obj\Release\net8.0-windows\TFT_simulator.Properties.Resources.resources

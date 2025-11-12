@@ -46,6 +46,8 @@
             AddTextButton = new ToolStripButton();
             ExportButton = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
+            BackgroundColorButton = new ToolStripButton();
+            BackgroundColorPicker = new ColorDialog();
             panel1.SuspendLayout();
             toolStrip1.SuspendLayout();
             SuspendLayout();
@@ -174,7 +176,7 @@
             // toolStrip1
             // 
             toolStrip1.AutoSize = false;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { AddRectButton, AddCircleButton, AddLineButton, AddTextButton, ExportButton, toolStripSeparator1 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { AddRectButton, AddCircleButton, AddLineButton, AddTextButton, ExportButton, toolStripSeparator1, BackgroundColorButton });
             toolStrip1.LayoutStyle = ToolStripLayoutStyle.Flow;
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
@@ -256,6 +258,27 @@
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(10, 41);
             // 
+            // BackgroundColorButton
+            // 
+            BackgroundColorButton.AutoSize = false;
+            BackgroundColorButton.BackColor = Color.White;
+            BackgroundColorButton.BackgroundImageLayout = ImageLayout.Center;
+            BackgroundColorButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            BackgroundColorButton.Font = new Font("Noto Sans TC", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            BackgroundColorButton.Image = Properties.Resources.palette;
+            BackgroundColorButton.ImageScaling = ToolStripItemImageScaling.None;
+            BackgroundColorButton.ImageTransparentColor = Color.Magenta;
+            BackgroundColorButton.Name = "BackgroundColorButton";
+            BackgroundColorButton.Size = new Size(41, 41);
+            BackgroundColorButton.Text = "Change Background Color";
+            BackgroundColorButton.Click += toolStripButton1_Click;
+            // 
+            // BackgroundColorPicker
+            // 
+            BackgroundColorPicker.AnyColor = true;
+            BackgroundColorPicker.Color = Color.White;
+            BackgroundColorPicker.FullOpen = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -300,5 +323,7 @@
         private ToolStripButton AddTextButton;
         private ToolStripButton ExportButton;
         private ToolStripSeparator toolStripSeparator1;
+        private ToolStripButton BackgroundColorButton;
+        private ColorDialog BackgroundColorPicker;
     }
 }
